@@ -7,9 +7,13 @@
 ## ## How it does:
 
 **INPUT**: Simple **String** in Claude code: "/company-brief {company website URL}" - "meeting with CEO {name of CEO}". 
+
 **BACK-END PROCESS**: **Autogenerates** company brief, **saves** it to `~/research-briefs/{company name}/{date}.md`; **log it in** a JSON index.
+
 **OUTPUT**: company brief in Md format. Stored, indexed, editable.
+
 **Storage**: read, write, index, edit; directly inside a **dedicated local library** `~/research-briefs.
+
 **User interface:** readable cleanly with **Obsidian**; vault pointed to that library.
 
 ## ## ROI:

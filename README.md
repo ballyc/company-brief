@@ -23,4 +23,4 @@
 
 ## Status
 Active.
-See `examples/Hebbia.md` for a sample company brief generated with this skill.
+See [`example/Hebbia.md`](https://github.com/ballyc/company-brief/blob/main/Example/Hebbia.md) for a sample company brief generated with this skill.

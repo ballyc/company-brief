@@ -1,32 +1,23 @@
-# My Claude Skills
-Personal AI skill library built on top of [gstack](https://github.com/garrytan/gstack) 
-and Claude Code.
-## What this is
-A collection of custom slash commands I designed and built to automate 
-repetitive workflow-specific tasks — starting with company research before meetings.
-## Skills
-### \/company-brief\
-Produces a structured intelligence brief on any company before a meeting.
-**Usage:**
-/company-brief {company website} --meeting "recruiting call with co-founder"
-/company-brief {company website} --quick        # Phase 1 only, 90 seconds
-/company-brief {company website} --update       # re-run, show what changed
-**What it produces:**
-- Phase 1 — Company overview, founders, funding, runway, risks
-- Phase 2 — Client persona, workflow, where the product fits
-- Phase 3 — Competitive landscape
-**Design decisions:**
-- Source discipline: Tier 1/2 sources labeled confirmed, everything else 
-  explicitly marked "Educated guess"
-- URL-derived slugs for deterministic \--update\ lookups
-- Controlled tag vocabulary so the index stays queryable over time
-- Parallel searches within each phase (~2 min saved per brief)
-- Phase-by-phase disk saves in case of failure mid-run
-Briefs saved to \~/research-briefs/{slug}/{date}.md\ with a master 
-\index.json\ for search.
-## Stack
-- [Claude Code](https://claude.ai/code) — AI that operates the terminal
-- [gstack](https://github.com/garrytan/gstack) — slash command framework
-- [gbrain](https://github.com/garrytan/gbrain) — personal knowledge base (in progress)
+## What it does:
+
+**/company-brief** : researches a company across 3 layers of depth, separating facts from educated guesses, and saves it to a searchable library.
+
+**For whom:** people who think like **investors** or **founders**, doing research on companies for their **personal use cases** (e.g. business development, investment, recruiting). **Solve for:** Signal over noise.
+
+## ## How it does:
+
+**INPUT**: Simple **String** in Claude code: "/company-brief {company website URL}" - "meeting with CEO {name of CEO}". 
+**BACK-END PROCESS**: **Autogenerates** company brief, **saves** it to `~/research-briefs/{company name}/{date}.md`; **log it in** a JSON index.
+**OUTPUT**: company brief in Md format. Stored, indexed, editable.
+**Storage**: read, write, index, edit; directly inside a **dedicated local library** `~/research-briefs.
+**User interface:** readable cleanly with **Obsidian**; vault pointed to that library.
+
+## ## ROI:
+
+| Scenario        | Process Time | Workflow                                                                   |
+| :-------------- | :----------- | :------------------------------------------------------------------------- |
+| manual research | 60min        | back-to-back prompting with LLMs + parallel tabs search, stays in my head. |
+| Tool use        | 4 min        | one brief generated in seconds. Saved and indexed.                         |
+**Capacity unlocked**: 15x.
 ## Status
-Active. WIP.
+Active.

@@ -1,7 +1,10 @@
 # company-brief — Company Intelligence Brief
 
-Generates a structured pre-meeting intelligence brief for a company.
+---
+description: Generates a structured pre-meeting intelligence brief for a company.
 Saves briefs to disk. Maintains a searchable JSON index.
+---
+
 
 ## Usage
 

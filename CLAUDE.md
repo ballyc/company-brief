@@ -50,4 +50,4 @@ jq '.briefs | sort_by(.date) | reverse | .[0:5] | .[] | {company, date}' ~/resea
 
 ## Editing the Skill
 
-`SKILL.md` is the only file that defines behavior. Changes to section ordering, output templates, or phase logic all live there. The `Example/Hebbia.md` file is a static reference — update it manually when the output format changes significantly.
+`SKILL.md` is the only file that defines behavior. Changes to section ordering, output templates, or phase logic all live there. The `Example/Eleven Labs.md` file is a static reference — update it manually when the output format changes significantly.

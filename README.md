@@ -104,4 +104,4 @@ That a 15x multiple reclaimed for strategic thinking prep.
 
 ## Status
 Active.
-See [`example/Hebbia.md`](https://github.com/ballyc/company-brief/blob/main/Example/Hebbia.md) for a sample company brief generated with this skill.
+See [`example/Eleven Labs.md`](https://github.com/ballyc/company-brief/blob/main/Example/Eleven Labs.md) for a sample company brief generated with this skill.

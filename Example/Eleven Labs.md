@@ -1,39 +1,6 @@
-Terminal screenshot:
+Terminal snapshot:
 
 ![alt text](image.png)
----
-  Brief saved: ~/research-briefs/eleven-labs/2026-06-06.md
-    Index: ~/research-briefs/index.json (13 total companies)
-    Phases: Phases 1–3
-    Meeting: Meeting with CEO (Mati Staniszewski)
-    Themes: infrastructure, enterprise-saas, developer-tools, b2b, b2c, growth-stage, hiring-aggressively
-    Funding stage: growth-stage ($11B valuation, $781M raised, Series D)
-
-    ---
-    Key things to know before your CEO meeting with Mati Staniszewski:
-
-    Who he is: Polish, Imperial College London (math), ex-BlackRock (launched the Aladdin Wealth platform),
-    ex-Palantir deployment strategist. Named TIME100 AI 2025. He's analytical and operationally serious —
-    not a purely technical founder. He and CTO Piotr Dabkowski are childhood friends from Warsaw who
-    co-founded in May 2022.
-
-    Where the company is right now: On a tear. $330M ARR at end of 2025 → $500M ARR by April 2026. Just
-    closed a $500M Series D at $11B valuation led by Sequoia, with NVIDIA, Salesforce, BlackRock, and
-    Deutsche Telekom all coming in as strategics. IPO is being actively signaled.
-
-    The real product bet: Three platforms — ElevenAgents (enterprise voice/chat AI), ElevenCreative (audio
-    generation + dubbing), ElevenAPI (developer infrastructure). The thesis is that ElevenLabs will own the
-    full audio stack the way AWS owns cloud compute.
-
-    The biggest risk to probe: Premium pricing (5x competitors like Cartesia) will face pressure as
-    open-source voice quality improves. And OpenAI shipping a dedicated voice product is an existential
-    scenario they need an answer for.
-
-  ✻ Churned for 4m 42s
-
-  ※ recap: Generated an ElevenLabs intelligence brief for a CEO meeting with Mati Staniszewski covering 
-    funding, product, clients, and competitors. Brief is saved and indexed. No next action needed. (disable
-    recaps in /config)
 ---
 
 MD file created:

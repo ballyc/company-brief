@@ -1,22 +1,30 @@
 ## What is it
 
-A single Claude Code skill (`/company-brief`) that generates structured pre-meeting intelligence briefs for companies. Saved and indexed.
+A single Claude Code skill that generates structured pre-meeting intelligence briefs on companies — saved, indexed, and built for people who think like investors or founders.
 
-**For whom:** people who think like **investors** or **founders**, doing research on companies for their **personal use cases** (e.g. business development, investment, recruiting). **What for:** instant signal-over-noise search.
+**For whom:** anyone doing company research for their own high-stakes use cases — recruiting, business development, investment.
+**What for:** instant signal-over-noise. One command instead of 60 minutes of parallel tabs.
 
-The skill executes in a fixed 8-step pipeline. See [`CLAUDE.md`](https://github.com/ballyc/company-brief/blob/main/CLAUDE.md) or [`SKILL.md`](https://github.com/ballyc/company-brief/blob/main/SKILL.md) for details (e.g. skill architecture, design constraints,...).
+**See a full example:** [`Example/Elevenlabs.md`](https://github.com/ballyc/company-brief/blob/main/Example/Elevenlabs.md) — the output speaks for itself.
 
 ---
 
 ## What's in a brief
 
-Each full brief contains three phases:
+Three phases, each written to disk immediately so partial output is never lost on failure:
 
-1. **Company overview** — product, founders credentials, team, funding, runway, key risks, and a meeting-specific framing block (recruiting / investor / BD).
+1. **Company overview** — product thesis, founders' credentials, funding, runway estimate, key risks, and a meeting-specific framing block (recruiting / investor / BD).
 2. **Client & persona deep-dive** — who buys it, their current workflow, where the product intervenes, pain points, named clients, what gets displaced.
-3. **Competitive landscape** — direct competitors, differentiation assessment, genuine white space, where it's crowded, and the key competitive risk.
+3. **Competitive landscape** — direct competitors, differentiation assessment, genuine white space, where it's crowded, key competitive risk.
 
-Every claim follows a strict source discipline: facts confirmed on the company's own site, an official press release, Crunchbase/PitchBook, or a named investor announcement are stated plainly; everything else — secondary news, calculations, inferences — is explicitly labeled `> **Educated guess:**`.
+### Source discipline
+
+Every factual claim is labeled at the point of writing:
+
+- **Confirmed** — sourced from the company's own website, an official press release, Crunchbase/PitchBook, or a named investor announcement. Stated plainly.
+- **`> **Educated guess:**`** — secondary news coverage, calculations, inferences. Explicitly flagged inline.
+
+The reason: an unlabeled wrong fact destroys trust before a high-stakes meeting. A labeled guess that turns out to be right is harmless. The discipline is baked into the prompt so it can't be quietly skipped under time pressure.
 
 ---
 
@@ -26,9 +34,9 @@ Every claim follows a strict source discipline: facts confirmed on the company's
 
 **Process:** Claude Code reads `SKILL.md` and follows it, using its built-in **web search**, **web fetch**, and **file** tools to research the company, then writes the brief and updates an index. No API keys, no database, no external dependencies.
 
-**Output:** a company brief in Markdown — stored, indexed, and editable.
+**Output:** a structured Markdown brief — stored, indexed, and editable.
 
-**Storage:** briefs are read, written, indexed, and edited inside a dedicated local library at `~/research-briefs`.
+**Storage:** briefs live in a dedicated local library at `~/research-briefs`.
 
 **Reading:** open `~/research-briefs` as a vault in [Obsidian](https://obsidian.md) to read briefs cleanly.
 
@@ -42,8 +50,6 @@ Every claim follows a strict source discipline: facts confirmed on the company's
 
 ### Install (1 minute)
 
-Clone the repo into Claude Code's skills folder:
-
 ```bash
 git clone https://github.com/ballyc/company-brief.git ~/.claude/skills/company-brief
 ```
@@ -51,9 +57,8 @@ git clone https://github.com/ballyc/company-brief.git ~/.claude/skills/company-b
 Restart Claude Code, you're ready.
 
 ---
-## How to use it
 
-In Claude Code, type:
+## How to use it
 
 ```
 /company-brief https://example.com --meeting "recruiting call with the CEO"
@@ -74,34 +79,29 @@ In Claude Code, type:
 /company-brief https://unreasonablelabs.ai --quick
 /company-brief https://unreasonablelabs.ai --update
 ```
----
-
-### Output
-
-On the first run, the skill creates the `~/research-briefs/` library and `index.json` automatically. Each brief saves to `~/research-briefs/{company}/{date}.md`, and each run appends an entry to `~/research-briefs/index.json` — the searchable log of every company you've briefed.
-
-Query the index with `jq`:
-
-```bash
-# All companies researched
-jq '.briefs[] | {company, date, meeting_type, funding_stage}' ~/research-briefs/index.json
-
-# All companies with a specific theme
-jq '.briefs[] | select(.themes[] == "enterprise-saas") | {company, date}' ~/research-briefs/index.json
-```
 
 ---
 
+## Output
 
-## ## ROI:
+On the first run, the skill creates the `~/research-briefs/` library and `index.json` automatically. Each brief saves to `~/research-briefs/{company}/{date}.md`, and each run appends an entry to `~/research-briefs/index.json` — a searchable log of every company you've briefed.
 
-| Scenario        | Process Time | Workflow                                                                   |
-| :-------------- | :----------- | :------------------------------------------------------------------------- |
-| manual research | 60min        | back-to-back prompting with LLMs + parallel tabs search, stays in my head, forget it after a few days. |
-| Tool use        | 4 min        | one brief generated in seconds. Saved and indexed.                         |
+The index is plain JSON — queryable with `jq` by date, funding stage, meeting type, or theme tags.
 
-That a 15x multiple reclaimed for strategic thinking prep.
+---
+
+## ROI
+
+| Scenario | Time | Workflow |
+|:---------|:-----|:---------|
+| Manual research | ~60 min | Back-to-back LLM prompting + parallel tab search. Stays in your head, forgotten after a few days. |
+| This skill | ~4 min | One command. Saved, indexed, retrievable. |
+
+15x faster. The reclaimed time goes to actual thinking, not information gathering.
+
+---
 
 ## Status
+
 Active.
-See [`example/Elevenlabs.md`](https://github.com/ballyc/company-brief/blob/main/Example/Elevenlabs.md) for a sample company brief generated with this skill.
+The working loop: use the skill; notice what's off, tighten the instruction. To tighten: list it under the skill.md's *Gotcha section*.
